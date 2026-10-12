@@ -1,0 +1,104 @@
+# Credentials and machine-specific settings
+.env
+.env.*
+!.env.example
+/.claude/settings.json
+**/.claude/settings.local.json
+/nornir_mcp/.claude/
+/nornir_mcp/mcp-client-config.json
+
+# Thesis documents, review notes and generated material
+/output/
+/tmp/
+/archive/
+/docs/
+/assets/presentation_generated/
+/CHANGELOG_TESE.md
+/ESTRUTURA_TESE.md
+/FABRIC_WORKFLOW_EXPLANATION.md
+/pontosFeF.md
+/RESUMO_APRESENTACAO.md
+/tests/EXPERIMENTAL_PROTOCOL.md
+/tests/README.legacy.md
+/tests/poc_symmetric_irb.md
+/scripts/generate_chapter7_figures.py
+/xiaomi v2.5  execution claude code 18.5k input tokens and 1.6m  cache e com memory
+
+# Historical entrypoints and unused local client configuration
+/nornir_mcp/run.py
+/nornir_mcp/server.py
+/opencode.jsonc
+
+# Containerlab runtime state and captures
+clab-*/
+*.clab.yml.annotations.json
+ansible-inventory.yml
+*.pcap
+*.pcapng
+
+# Private operational memory; the published M0 example is under tests/
+/nornir_mcp/memory_mcp/data/*
+!/nornir_mcp/memory_mcp/data/.gitignore
+!/nornir_mcp/memory_mcp/data/.gitkeep
+
+# Python environments, caches and build output
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+ENV/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+/nornir_mcp/build/
+/nornir_mcp/dist/
+*.log
+*.json.bak
+
+# Docker and editor-local files
+.docker/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Only the preserved campaign evidence is published from this directory
+/tests/results/*
+!/tests/results/costs
+!/tests/results/T1run1/
+!/tests/results/T2run1/
+!/tests/results/T3run1/
+!/tests/results/T4antes/
+!/tests/results/T4run1/
+!/tests/results/full_runs_all_parameters/
+/tests/results/*/*
+!/tests/results/T1run1/T1_validation.json
+!/tests/results/T2run1/T1_validation.json
+!/tests/results/T2run1/T2_validation.json
+!/tests/results/T3run1/T3_validation.json
+!/tests/results/T4antes/T1_validation.json
+!/tests/results/T4run1/T1_validation.json
+!/tests/results/full_runs_all_parameters/MiMo T1R1.txt
+!/tests/results/full_runs_all_parameters/MiMo T1R2.txt
+!/tests/results/full_runs_all_parameters/MiMo T2R1.txt
+!/tests/results/full_runs_all_parameters/MiMo T2R2.txt
+!/tests/results/full_runs_all_parameters/MiMo T3R1.txt
+!/tests/results/full_runs_all_parameters/MiMo T3R2.txt
+!/tests/results/full_runs_all_parameters/MiMo T4R1.txt
+!/tests/results/full_runs_all_parameters/MiMo T4R2.txt
+!/tests/results/full_runs_all_parameters/DeepSeek T1R1.txt
+!/tests/results/full_runs_all_parameters/DeepSeek T1R2.txt
+!/tests/results/full_runs_all_parameters/DeepSeek T2R1.txt
+!/tests/results/full_runs_all_parameters/DeepSeek T2R2.txt
+!/tests/results/full_runs_all_parameters/DeepSeek T3R1.txt
+!/tests/results/full_runs_all_parameters/DeepSeek T3R2.txt
+!/tests/results/full_runs_all_parameters/DeepSeek T4R1_createEp.txt
+!/tests/results/full_runs_all_parameters/DeepSeek T4R2_withEP.txt
+!/tests/results/full_runs_all_parameters/DeepSeek T4R3noEp.txt

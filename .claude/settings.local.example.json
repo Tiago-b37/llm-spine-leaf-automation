@@ -1,0 +1,62 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__nornir-mcp__get_facts",
+      "mcp__nornir-mcp__get_arp_table",
+      "mcp__nornir-mcp__get_bgp_neighbors",
+      "mcp__nornir-mcp__get_interfaces_ip",
+      "mcp__nornir-mcp__get_lldp_neighbors",
+      "mcp__nornir-mcp__is_alive",
+      "mcp__nornir-mcp__get_config",
+      "mcp__nornir-mcp__get_bgp_config",
+      "mcp__nornir-mcp__get_bgp_neighbors_detail",
+      "mcp__nornir-mcp__get_lldp_neighbors_detail",
+      "mcp__nornir-mcp__get_network_instances",
+      "mcp__nornir-mcp__traceroute",
+      "mcp__nornir-mcp__send_command_to_devices",
+      "mcp__nornir-mcp__check_ospf_summary",
+      "mcp__nornir-mcp__check_evpn_summary",
+      "mcp__nornir-mcp__check_dataplane_summary",
+      "mcp__nornir-mcp__send_command",
+      "mcp__nornir-mcp__list_all_hosts",
+      "mcp__nornir-mcp__get_fabric_health",
+      "mcp__nornir-mcp__delete_vxlan",
+      "mcp__nornir-mcp__delete_bgp_neighbor",
+      "mcp__nornir-mcp__configure_vrf",
+      "mcp__nornir-mcp__configure_mlag",
+      "mcp__nornir-mcp__delete_ospf",
+      "mcp__nornir-mcp__configure_device_bulk",
+      "mcp__nornir-mcp__configure_fabric_bulk",
+      "mcp__nornir-mcp__apply_fabric_dry_run",
+      "mcp__nornir-mcp__check_bgp_underlay_summary",
+      "mcp__memory-mcp__search_device_quirks",
+      "mcp__memory-mcp__list_memory_episodes",
+      "mcp__memory-mcp__get_memory_episode",
+      "Bash(clab inspect *)",
+      "Bash(docker ps *)",
+      "Bash(docker exec clab-dc2-topology-client*-dc2 ip *)",
+      "Bash(docker exec clab-dc2-topology-client*-dc2 ping *)",
+      "Bash(sleep 10)",
+      "Bash(sleep 15)",
+      "Bash(ping -c 2 -W 2 172.20.0.11 && ping -c 2 -W 2 172.20.0.12)",
+      "Bash(docker exec clab-dc2-topology-client8-dc2 ping -q -c 3 -W 3 10.10.10.30; echo \"exit=$?\")",
+      "Bash(docker exec clab-dc2-topology-client10-dc2 ping -q -c 3 -W 3 10.10.10.10; echo \"exit=$?\")",
+      "Bash(docker exec clab-dc2-topology-client9-dc2 ping -q -c 3 -W 3 10.10.10.40; echo \"exit=$?\")",
+      "Bash(docker exec clab-dc2-topology-client11-dc2 ping -q -c 3 -W 3 10.10.10.20; echo \"exit=$?\")",
+      "Bash(echo \"=== RED: client10 -> gw ===\"; docker exec clab-dc2-topology-client10-dc2 ping -q -c 3 10.10.10.1; echo \"=== RED: client11 -> gw ===\"; docker exec clab-dc2-topology-client11-dc2 ping -q -c 3 10.10.10.1; echo \"=== RED: client10 -> client11 ===\"; docker exec clab-dc2-topology-client10-dc2 ping -q -c 3 10.10.10.40; echo \"=== RED: client11 -> client10 ===\"; docker exec clab-dc2-topology-client11-dc2 ping -q -c 3 10.10.10.30)",
+      "Bash(echo \"=== BLUE: client8 -> gw ===\"; docker exec clab-dc2-topology-client8-dc2 ping -q -c 3 10.10.10.1; echo \"=== BLUE: client9 -> gw ===\"; docker exec clab-dc2-topology-client9-dc2 ping -q -c 3 10.10.10.1; echo \"=== BLUE: client8 -> client9 ===\"; docker exec clab-dc2-topology-client8-dc2 ping -q -c 3 10.10.10.20; echo \"=== BLUE: client9 -> client8 ===\"; docker exec clab-dc2-topology-client9-dc2 ping -q -c 3 10.10.10.10)",
+      "Bash(echo \"=== CROSS: client10\\(RED\\) -> client8\\(BLUE\\) expect FAIL ===\"; docker exec clab-dc2-topology-client10-dc2 ping -q -c 3 -W 2 10.10.10.10; echo \"=== CROSS: client8\\(BLUE\\) -> client10\\(RED\\) expect FAIL ===\"; docker exec clab-dc2-topology-client8-dc2 ping -q -c 3 -W 2 10.10.10.30)",
+      "Bash(docker exec clab-dc2-topology-client8-dc2 ping -q -c 3 -W 2 10.10.10.30; echo \"exit=$?\")"
+    ],
+    "ask": [
+      "mcp__memory-mcp__save_episode"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "nornir-mcp",
+    "memory-mcp"
+  ],
+  "disabledMcpjsonServers": [
+    "nornir-mcp-server"
+  ]
+}

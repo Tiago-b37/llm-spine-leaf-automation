@@ -1,0 +1,142 @@
+# =============================================================
+# .claudeignore — Files excluded from Claude Code indexing
+# =============================================================
+# Limit indexing to files used during network automation tasks.
+
+# ──────────────────────────────────────────
+# CONTAINERLAB — Runtime generated content
+# ──────────────────────────────────────────
+# Generated router configurations and logs
+clab-dc2-topology/
+
+# Containerlab Draw.io / annotation generated file
+*.annotations.json
+
+# ──────────────────────────────────────────
+# PYTHON — Dependency and build artifacts
+# ──────────────────────────────────────────
+# Generated dependency lockfiles
+uv.lock
+*.lock
+poetry.lock
+Pipfile.lock
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Build / cache
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+
+# Dependency specs (agent doesn't install packages)
+pyproject.toml
+setup.py
+setup.cfg
+requirements*.txt
+
+# ──────────────────────────────────────────
+# INFRASTRUCTURE — Docker / deployment files
+# ──────────────────────────────────────────
+# Agent doesn't manage containers or deployments
+Dockerfile
+docker-compose.yml
+docker-compose*.yml
+.dockerignore
+
+# ──────────────────────────────────────────
+# LICENSING & PROJECT METADATA
+# ──────────────────────────────────────────
+LICENSE
+LICENSE.md
+NOTICE
+*.yml.spec
+Nornir MCP.yml
+.python-version
+
+# ──────────────────────────────────────────
+# LLM PROXY — Model/API configuration
+# ──────────────────────────────────────────
+# Agent doesn't reconfigure the LLM proxy
+litellm_config.yaml
+settings.cerebras.json
+settings.groq.json
+settings.nvidia.json
+mcp-client-config.json
+
+# ──────────────────────────────────────────
+# DATA / CAPTURES — Raw output files
+# ──────────────────────────────────────────
+*.log
+*.pcap
+*.pcapng
+*.csv
+*.json.bak
+nornir_mcp/memory_mcp/data/
+
+# ──────────────────────────────────────────
+# OBSOLETE RESOURCES
+# ──────────────────────────────────────────
+# Cisco IOS reference data
+nornir_mcp/resources/cisco_ios_commands.json
+
+# ──────────────────────────────────────────
+# NODE / WEB
+# ──────────────────────────────────────────
+node_modules/
+.next/
+.nuxt/
+dist/
+
+# ──────────────────────────────────────────
+# OS / EDITOR JUNK
+# ──────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ──────────────────────────────────────────
+# THESIS DOCUMENTATION
+# ──────────────────────────────────────────
+# The agent does NOT need background theory or changelogs at runtime
+CHANGELOG_TESE.md
+RESUMO_*.md
+OSPF_WORKFLOW_EXPLANATION*.md
+*.md.spec
+# Explicitly ALLOW CLAUDE.md (DO NOT ignore it)
+!CLAUDE.md
+
+# ──────────────────────────────────────────
+# SHELL SCRIPTS & RUNTIME AUTOMATION
+# ──────────────────────────────────────────
+# Auxiliary scripts not relevant for network automation tasks
+*.sh
+claude_aliases.sh
+start_environment.sh
+stop_environment.sh
+
+# ──────────────────────────────────────────
+# JSON SETTINGS / ARTIFACTS
+# ──────────────────────────────────────────
+settings.*.json
+claude*.json
+skills-lock.json
+test_rigor.py
+
+# ──────────────────────────────────────────
+# CONTAINERLAB RAW TOPOLOGIES
+# ──────────────────────────────────────────
+# Agent gets topology info via CLI tools and prompt, not reading raw YAML
+*.clab.yml
