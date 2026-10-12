@@ -1,4 +1,4 @@
-# LLM-Assisted EVPN/VXLAN Network Configuration
+# Automating Network Configuration Using Natural Language Prompts and Large Language Models
 
 This project implements the prototype evaluated in a master's dissertation on
 using Large Language Models to configure and operate a spine-leaf fabric.
@@ -105,9 +105,8 @@ cp -n .env.example ../.env
 ```
 
 Fill in the selected main provider's key and the GLM token in that private
-file. Do not commit credentials. The helper first checks
-`/media/sf_Codigo_tese/.env`, then `$HOME/Codigo_tese/.env`, then the file above
-its own directory; an existing file at an earlier location takes precedence.
+file. Do not commit credentials. The helper loads this file from the directory
+above the project, regardless of where the project is stored.
 The `admin/admin` credentials in the Nornir inventory are for this isolated lab.
 
 Select one model preset. Review or back up existing user-wide settings before
@@ -127,10 +126,8 @@ host sandbox or a guarantee that every accepted device command is read-only.
 
 ### Start and Stop
 
-The helper currently assumes the VM path
-`/media/sf_Codigo_tese/1tese/litellm_config.yaml` and the Claude Code executable
-`/usr/local/bin/claude`. Adjust those paths in
-[claude_aliases.sh](claude_aliases.sh) before using a different installation.
+[claude_aliases.sh](claude_aliases.sh) locates `litellm_config.yaml` relative
+to its own directory and finds the Claude Code executable through `PATH`.
 
 ```bash
 source ./claude_aliases.sh
@@ -186,7 +183,7 @@ including diagnosis, approval, correction and the subsequent BGP check.
 |---|---|
 | [CLAUDE.md](CLAUDE.md), [.claude/skills/](.claude/skills/) | Agent instructions and local skills |
 | [.mcp.json](.mcp.json), model presets and proxy configuration | Client connections and model selection |
-| [dc2-topology-frr.clab.yml](dc2-topology-frr.clab.yml), [configs/](configs/) | Source topology and initial switch configurations |
+| [dc2-topology.clab.yml](dc2-topology.clab.yml), [configs/](configs/) | Source topology and initial switch configurations |
 | [nornir_mcp/](nornir_mcp/) | Stdio backend, command generation and validation |
 | [nornir_mcp/conf/](nornir_mcp/conf/) | Inventory, connection settings and command blacklist |
 | [nornir_mcp/memory_mcp/](nornir_mcp/memory_mcp/) | Operational-memory implementation |
@@ -206,5 +203,7 @@ state-changing command. Execution controls do not verify every statement in
 an agent's report; explanations still need checking against tool outputs.
 This is a research prototype, not a production deployment guarantee.
 
-The backend's original MIT license and attribution are retained in
-[nornir_mcp/LICENSE](nornir_mcp/LICENSE).
+The network backend was adapted from
+[nornir_mcp](https://github.com/yhvh-chen/nornir_mcp), using upstream commit
+`901f90a` as the starting point. The original MIT license and copyright
+notice are retained in [nornir_mcp/LICENSE](nornir_mcp/LICENSE).

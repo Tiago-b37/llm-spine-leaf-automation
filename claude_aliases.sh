@@ -4,13 +4,12 @@
 # CLAUDE CODE - LITELLM STARTUP WITH SETTINGS-DRIVEN MODEL PRESETS
 # ==============================================================================
 
-# Load API keys from the known project locations.
-if [ -f "/media/sf_Codigo_tese/.env" ]; then
-  source /media/sf_Codigo_tese/.env
-elif [ -f "$HOME/Codigo_tese/.env" ]; then
-  source "$HOME/Codigo_tese/.env"
-elif [ -f "$(dirname "$BASH_SOURCE")/../.env" ]; then
-  source "$(dirname "$BASH_SOURCE")/../.env"
+# Resolve the project location from this script, not from the current directory.
+_CLAUDE_PROJECT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+# Load API keys from the private file above the project directory.
+if [ -f "${_CLAUDE_PROJECT_DIR}/../.env" ]; then
+  source "${_CLAUDE_PROJECT_DIR}/../.env"
 fi
 
 [ -n "$ZAI_AUTH_TOKEN" ] && export ZAI_AUTH_TOKEN
@@ -34,19 +33,25 @@ echo "API keys loaded:"
 
 unalias claude 2>/dev/null
 claude() {
+  local claude_binary
+  if ! claude_binary="$(type -P claude)"; then
+    echo "Error: Claude Code was not found in PATH." >&2
+    return 1
+  fi
+
   # Direct Claude subcommands do not require the LiteLLM proxy.
   if [ "$#" -gt 0 ]; then
-    /usr/local/bin/claude "$@"
+    "$claude_binary" "$@"
     return
   fi
 
   echo "Starting LiteLLM proxy..."
   pkill -f "litellm" 2>/dev/null
-  litellm --config /media/sf_Codigo_tese/1tese/litellm_config.yaml --port 4000 > /tmp/litellm.log 2>&1 &
+  litellm --config "${_CLAUDE_PROJECT_DIR}/litellm_config.yaml" --port 4000 > "${TMPDIR:-/tmp}/litellm.log" 2>&1 &
   echo "Waiting for the proxy to start..."
   sleep 4
   echo "Proxy ready. Launching Claude Code..."
-  /usr/local/bin/claude
+  "$claude_binary"
 }
 
 alias claudeq='
