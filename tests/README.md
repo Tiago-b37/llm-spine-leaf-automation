@@ -249,7 +249,7 @@ boundary as the four normal T4 runs.
 
 ## Saved JSONs and Costs
 
-Seven JSON files are preserved as supporting network-state checks. They do not
+Six JSON files are preserved as supporting network-state checks. They do not
 provide one validation record per official execution, and their names alone do
 not establish a complete model/run chronology.
 
@@ -257,7 +257,6 @@ not establish a complete model/run chronology.
 |---|---|
 | [results/T1run1/](results/T1run1/) | `T1_validation.json` |
 | [results/T2run1/](results/T2run1/) | `T1_validation.json`, `T2_validation.json` |
-| [results/T2run1deep/](results/T2run1deep/) | `T2_validation.json` |
 | [results/T3run1/](results/T3run1/) | `T3_validation.json` |
 | [results/T4antes/](results/T4antes/) | `T1_validation.json` |
 | [results/T4run1/](results/T4run1/) | `T1_validation.json` |
